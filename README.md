@@ -63,6 +63,6 @@ Coming soon...
 
 ## Author
 
-Mortada Mohammed Mahdi
+Mortada Mohammed
 Computer Engineering Student  
 Basra, Iraq
