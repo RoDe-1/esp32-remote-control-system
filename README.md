@@ -73,4 +73,4 @@ Basra, Iraq
 
 ## Preview
 
-![Dashboard](Screenshot 2026-05-09 005405.png)
+![Dashboard](dashboard.png)
