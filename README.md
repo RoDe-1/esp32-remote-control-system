@@ -1,11 +1,68 @@
-ESP-IDF template app
-====================
+# ESP32 IoT Cloud Dashboard
 
-This is a template application to be used with [Espressif IoT Development Framework](https://github.com/espressif/esp-idf).
+A real-time IoT system built using ESP32 and MQTT, featuring remote device control and a web-based monitoring dashboard.
 
-Please check [ESP-IDF docs](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html) for getting started instructions.
+---
 
-*Code in this repository is in the Public Domain (or CC0 licensed, at your option.)
-Unless required by applicable law or agreed to in writing, this
-software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied.*
+## Overview
+
+This project integrates embedded firmware, cloud messaging, and a web interface to enable real-time monitoring and control of connected devices.
+
+---
+
+## Features
+
+- Real-time sensor data streaming
+- Remote device control via MQTT
+- Secure cloud communication
+- Interactive web dashboard
+- Task scheduling and system feedback
+
+---
+
+## Technologies Used
+
+- ESP32
+- ESP-IDF
+- MQTT (EMQX)
+- SNTP
+- HTML / CSS / JavaScript
+
+---
+
+## Application
+
+Used for real-time monitoring and control of connected devices, enabling seamless device-to-cloud communication and smart system interaction.
+
+---
+
+## Project Structure
+
+main/           -> application source code  
+components/     -> reusable modules  
+CMakeLists.txt  -> build configuration  
+
+---
+
+## Getting Started
+
+1. Install ESP-IDF  
+2. Clone the repository  
+3. Run:
+  idf.py build
+  idf.py flash
+  idf.py monitor
+
+---
+
+## Demo
+
+Coming soon...
+
+---
+
+## Author
+
+Mortada Mohammed Mahdi
+Computer Engineering Student  
+Basra, Iraq
