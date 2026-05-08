@@ -49,6 +49,7 @@ CMakeLists.txt  -> build configuration
 1. Install ESP-IDF  
 2. Clone the repository  
 3. Run:
+   
   idf.py build
   idf.py flash
   idf.py monitor
