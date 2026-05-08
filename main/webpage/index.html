@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>RoDe ESP32 Application</title>
+
+    <link rel="stylesheet" href="app.css?v=5" />
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="app.js?v=5" defer></script>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="header-content">
+        <h1>ESP32 Application Development</h1>
+        <p class="subtitle">Firmware Management Dashboard</p>
+        <div id="EspSSID">
+          <h2>ESP32 SSID</h2>
+          <label for="ap_ssid">Access Point SSID: </label>
+          <div id="ap_ssid"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="top-cards">
+        <section id="LocalTimeCard" class="card time-card">
+          <div class="time-header">
+            <h2>Local Time</h2>
+            <span class="time-badge">SNTP</span>
+          </div>
+
+          <div class="time-info-box">
+            <div class="time-note">
+              Connect the ESP32 to WiFi to synchronize local time.
+            </div>
+            <div id="local_time" class="local-time-value">
+              --.--.---- --:--:--
+            </div>
+          </div>
+        </section>
+        <section id="OTA" class="card">
+          <div class="card-header">
+            <h2>ESP32 Firmware Update</h2>
+            <span id="status_badge" class="status-badge status-ready"
+              >Ready</span
+            >
+          </div>
+
+          <div class="firmware-info">
+            <label id="latest_firmware_label" for="selected_file">
+              Latest Firmware
+            </label>
+            <div id="latest_firmware" class="firmware-version">
+              No firmware loaded
+            </div>
+          </div>
+
+          <div class="upload-area">
+            <input
+              type="file"
+              id="selected_file"
+              accept=".bin"
+              hidden
+              onchange="getFileInfo()"
+            />
+
+            <div class="buttons">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="document.getElementById('selected_file').click()"
+              >
+                Select File
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="updateFirmware()"
+              >
+                Update Firmware
+              </button>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <h4 id="file_info">No file selected</h4>
+            <h4 id="ota_update_status">Waiting for action</h4>
+          </div>
+        </section>
+
+        <section id="DHT22Sensor" class="card sensor-card">
+          <div class="sensor-header">
+            <h2>DHT22 Sensor Readings</h2>
+            <span class="sensor-badge">Live</span>
+          </div>
+
+          <div class="sensor-grid">
+            <div class="sensor-box">
+              <div class="sensor-label">Temperature</div>
+              <div id="temperature_readings" class="sensor-value">-- °C</div>
+            </div>
+
+            <div class="sensor-box">
+              <div class="sensor-label">Humidity</div>
+              <div id="humidity_readings" class="sensor-value">-- %</div>
+            </div>
+          </div>
+
+          <div id="sensor_status" class="sensor-status">
+            Waiting for sensor data...
+          </div>
+        </section>
+      </div>
+
+      <section id="WiFiConnect" class="card wifi-card">
+        <div class="wifi-header">
+          <h2>ESP32 WiFi Connect</h2>
+          <span class="wifi-badge">STA Mode</span>
+        </div>
+
+        <div class="wifi-form">
+          <input
+            id="connect_ssid"
+            class="wifi-input"
+            type="text"
+            maxlength="32"
+            placeholder="SSID"
+            value=""
+          />
+
+          <input
+            id="connect_pass"
+            class="wifi-input"
+            type="password"
+            maxlength="64"
+            placeholder="Password"
+            value=""
+          />
+
+          <label class="show-password-row">
+            <input type="checkbox" onclick="showPassword()" />
+            <span>Show Password</span>
+          </label>
+        </div>
+
+        <div class="buttons">
+          <button id="connect_wifi" type="button" class="btn btn-primary">
+            Connect
+          </button>
+        </div>
+
+        <div id="wifi_connect_credentials_errors" class="wifi-errors"></div>
+
+        <div id="wifi_connect_status" class="wifi-status">
+          Waiting for action
+        </div>
+
+        <div id="ConnectInfo" class="connect-info-card">
+          <h3 class="connect-info-title">Connection Information</h3>
+
+          <div class="connect-info-row">
+            <span class="connect-info-label" id="connected_ap_label"
+              >Connected to:</span
+            >
+            <span class="connect-info-value" id="connected_ap">--</span>
+          </div>
+
+          <div class="connect-info-row">
+            <span class="connect-info-label" id="ip_address_label"
+              >IP Address:</span
+            >
+            <span class="connect-info-value" id="wifi_connect_ip">--</span>
+          </div>
+
+          <div class="connect-info-row">
+            <span class="connect-info-label" id="netmask_label">Netmask:</span>
+            <span class="connect-info-value" id="wifi_connect_netmask">--</span>
+          </div>
+
+          <div class="connect-info-row">
+            <span class="connect-info-label" id="gateway_label">Gateway:</span>
+            <span class="connect-info-value" id="wifi_connect_gw">--</span>
+          </div>
+
+          <div class="buttons connect-info-buttons">
+            <button
+              id="disconnect_wifi"
+              type="button"
+              class="btn btn-secondary"
+            >
+              Disconnect
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
