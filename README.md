@@ -51,7 +51,9 @@ CMakeLists.txt  -> build configuration
 3. Run:
    
   idf.py build
+  
   idf.py flash
+  
   idf.py monitor
 
 ---
